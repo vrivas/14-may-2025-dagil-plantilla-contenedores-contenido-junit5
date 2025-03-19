@@ -156,8 +156,6 @@ public class ContenidoTest {
         assertEquals("{id: 1, descripcion: 'Descripción para testToString'}", objeto.toString());
     }
 
-    }
-
     @AfterAll
     public void setDown() {
         System.out.println("Finalizando test clase Contenido...");
