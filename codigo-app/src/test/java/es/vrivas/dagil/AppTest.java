@@ -9,10 +9,10 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
  */
 class AppTest {
     /**
-     * Rigorous Test.
+     * Test de introducción de un conjunto de datos de prueba
      */
     @Test
-    void testApp() {
-        assertEquals(1, 1);
+    public void testIntroducir_datos_de_prueba() {
+        assertEquals(6, App.establecer_datos_de_prueba());
     }
 }

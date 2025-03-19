@@ -20,6 +20,16 @@ public final class App {
     }
 
     /**
+    * Método para introducir algunos datos de prueba en el contenedor
+    */
+    public static int establecer_datos_de_prueba() {
+        for (int i = 0; i < 6; ++i) {
+            contenedor.add(new Contenido().setId(i).setDescripcion("Objeto " + i));
+        }
+        return contenedor.getNumObjetosContenidos();
+    }
+
+    /**
      * Método para responder a la opción 1 del menú: mostrar contenido del objeto contenedor
      */
     public static void mostrar_contenido_del_objeto_contenedor() {
@@ -63,7 +73,7 @@ public final class App {
      */
     public static void main(String[] args) {
         System.out.println("\n" + TITULO + "    (por " + AUTOR + ")");
-
+        establecer_datos_de_prueba();
         boolean salir = false;
         do {
             switch (menu_principal()) {
