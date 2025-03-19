@@ -4,12 +4,13 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertSame;
 import static org.junit.jupiter.api.Assertions.fail;
 
-import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.AfterAll;
+import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 
 public class ContenidoTest {
 
-    @BeforeEach
+    @BeforeAll
     public void setUp() {
         System.out.println("Iniciando test clase Contenido...");
     }
@@ -114,5 +115,10 @@ public class ContenidoTest {
             objeto.setDescripcion("Descripción para testToString");
             assertEquals("{id: 1, descripcion: 'Descripción para testToString'}", objeto.toString());
         }
+    }
+
+    @AfterAll
+    public void setDown() {
+        System.out.println("Finalizando test clase Contenido...");
     }
 }

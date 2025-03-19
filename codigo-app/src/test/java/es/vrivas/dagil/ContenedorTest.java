@@ -4,14 +4,15 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertSame;
 import static org.junit.jupiter.api.Assertions.fail;
 
-import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.AfterAll;
+import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 
 public class ContenedorTest {
     /**
      * Inicialización de los tests
      */
-    @BeforeEach
+    @BeforeAll
     public void setUp() {
         System.out.println("Iniciando test clase Contenedor...");
     }
@@ -190,4 +191,10 @@ public class ContenedorTest {
             assertEquals(cadenaJSONEsperada, contenedor.toString());
         }
     }
+
+    @AfterAll
+    public void setDown() {
+        System.out.println("Finalizando test clase Contenedor...");
+    }
+
 }
