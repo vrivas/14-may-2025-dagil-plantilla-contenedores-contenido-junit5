@@ -18,10 +18,12 @@ public class ContenidoTest {
         System.out.println("Iniciando test clase Contenido...");
     }
 
+    //---------------------------------------------------------------
     // Tests para el método getId
+    //---------------------------------------------------------------
 
     /**
-     * Comprueba que el id inicial es 0
+     * Comprueba que el id inicial es 0.
      */
     @Test
     public void getId_inicia_a_0() {
@@ -30,7 +32,7 @@ public class ContenidoTest {
     }
 
     /**
-     * Comprueba que el id se puede establecer a otro valor
+     * Comprueba que el id se puede establecer a otro valor.
      */
     @Test
     public void getId_inicia_a_otro_valor() {
@@ -40,10 +42,12 @@ public class ContenidoTest {
         assertEquals(1, objeto.getId());
     }
 
+    //---------------------------------------------------------------
     // Tests para el método getDescripcion
+    //---------------------------------------------------------------
 
     /**
-     * Comprueba que la descripción inicial es ""
+     * Comprueba que la descripción inicial es "".
      */
     @Test
     public void getDescripcion_inicia_vacia() {
@@ -54,7 +58,7 @@ public class ContenidoTest {
     }
 
     /**
-     * Comprueba que la descripción se puede establecer a otro valor
+     * Comprueba que la descripción se puede establecer a otro valor.
      */
     @Test
     public void getDescripcion_inicia_a_otro_valor() {
@@ -63,9 +67,12 @@ public class ContenidoTest {
         objeto.setDescripcion("Descripción");
     }
 
+    //---------------------------------------------------------------
     // Tests para el método setId
+    //---------------------------------------------------------------
+
     /**
-     * Comprueba que salta una excepción si se intenta establecer un id negativo
+     * Comprueba que salta una excepción si se intenta establecer un id negativo.
      */
     @Test
     public void setId_excepciones() {
@@ -80,7 +87,7 @@ public class ContenidoTest {
     }
 
     /**
-     * Comprueba que se puede establecer un id y que devuelve el propio objeto
+     * Comprueba que se puede establecer un id y que devuelve el propio objeto.
      */
     @Test
     public void setId_asigna_id_y_devuelve_this() {
@@ -90,10 +97,12 @@ public class ContenidoTest {
         assertEquals(1, objeto.getId());
     }
 
+    //---------------------------------------------------------------
     // Tests para el método setDescripcion
+    //---------------------------------------------------------------
 
     /**
-     * Comprueba que salta una excepción si se intenta establecer una descripción nula o vacía
+     * Comprueba que salta una excepción si se intenta establecer una descripción nula o vacía.
      */
     @Test
     public void setDescripcion_excepciones() {
@@ -116,7 +125,7 @@ public class ContenidoTest {
     }
 
     /**
-     * Comprueba que la descripción inicial es ""
+     * Comprueba que la descripción inicial es "".
      */
     @Test
     public void setDescripcion_descripcion_inicial_es_nula() {
@@ -125,7 +134,7 @@ public class ContenidoTest {
     }
 
     /**
-     * Comprueba que establece una descripción y que devuelve el mismo objeto
+     * Comprueba que establece una descripción y que devuelve el mismo objeto.
      */
     @Test
     public void setDescripcion_asigna_descripcion_y_devuelve_this() {
@@ -135,8 +144,11 @@ public class ContenidoTest {
         assertEquals("Descripción", objeto.getDescripcion());
     }
 
+    //---------------------------------------------------------------
+    // Tests para el método toString
+    //---------------------------------------------------------------
     /**
-     * Comprueba que devuelve un string con el objeto en formato JSON para un objeto con id 0 y descripción ""
+     * Comprueba que devuelve un string con el objeto en formato JSON para un objeto con id 0 y descripción "".
      */
     @Test
     public void toString_constructor_por_defecto() {
@@ -145,7 +157,7 @@ public class ContenidoTest {
     }
 
     /**
-    * Comprueba que devuelve un string con el objeto en formato JSON
+    * Comprueba que devuelve un string con el objeto en formato JSON.
     */
     @Test
     public void toString_objeto_con_datos() {
@@ -156,6 +168,9 @@ public class ContenidoTest {
         assertEquals("{id: 1, descripcion: 'Descripción para testToString'}", objeto.toString());
     }
 
+    /**
+     * Mensaje indicando que se finalizan los tests de la clase Contenido.
+     */
     @AfterAll
     public static void setDown() {
         System.out.println("Finalizando test clase Contenido...");

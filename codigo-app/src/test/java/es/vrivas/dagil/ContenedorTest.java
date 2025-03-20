@@ -10,15 +10,19 @@ import org.junit.jupiter.api.Test;
 
 public class ContenedorTest {
     /**
-     * Inicialización de los tests
+     * Inicialización de los tests.
      */
     @BeforeAll
     public static void setUp() {
         System.out.println("Iniciando test clase Contenedor...");
     }
 
+    // ---------------------------------------------------------------
+    // Tests para el método add
+    // ---------------------------------------------------------------
+
     /**
-     * Test para el método add del contenedor.
+     * Excepción si se intenta añadir un objeto nulo.
      */
     @Test
     public void add_excepcion_si_objeto_nulo() {
@@ -34,6 +38,9 @@ public class ContenedorTest {
 
     }
 
+    /**
+     * El método add devuelve el mismo objeto.
+     */
     @Test
     public void add_devuelve_mismo_objeto() {
         // El método debe devolver el mismo objeto
@@ -45,6 +52,9 @@ public class ContenedorTest {
 
     }
 
+    /**
+     * El método add inserta un objeto.
+     */
     @Test
     public void add_inserta_objeto() {
         // El objeto se ha añadido al contenedor
@@ -58,6 +68,9 @@ public class ContenedorTest {
         assert (objetoRecuperado.getDescripcion().equals(DESCRIPCION));
     }
 
+    /**
+     * Excepción si se intenta añadir un objeto que ya existe.
+     */
     @Test
     public void add_excepcion_si_objeto_ya_existe() {
         try {// Se intenta añadir otra vez el mismo objeto
@@ -73,8 +86,11 @@ public class ContenedorTest {
         }
     }
 
+    // ---------------------------------------------------------------
+    // Tests para el método getNumObjetosContenidos
+    // ---------------------------------------------------------------
     /**
-     * Test para el método getNumObjetosContenidos del contenedor.
+     * Un contenedor vacío devuelve 0 objetos contenidos.
      */
     @Test
     public void getNumObjetosContenidos_contenedor_vacio() {
@@ -83,7 +99,9 @@ public class ContenedorTest {
         assert (contenedor.getNumObjetosContenidos() == 0);
     }
 
-    // Devuelve el número de objetos en el contenedor
+    /**
+     * Un contenedor no vacío devuelve el número de objetos contenidos.
+     */
     @Test
     public void getNumObjetosContenidos_contenedor_no_vacio() {
         Contenedor contenedor = new Contenedor();
@@ -94,8 +112,11 @@ public class ContenedorTest {
         assert (contenedor.getNumObjetosContenidos() == 1);
     }
 
+    // ---------------------------------------------------------------
+    // Tests para el método getPorPosicion
+    // ---------------------------------------------------------------
     /**
-     * Test para el método getPorPosicion del contenedor.
+     * Excepción si la posición es negativa.
      */
     @Test
     public void getPorPosicion_excepcion_posicion_negativa() {
@@ -111,8 +132,11 @@ public class ContenedorTest {
 
     }
 
+    /**
+     * Excepción si la posición es mayor o igual al número de elementos que hay.
+     */
     @Test
-    public void getPorPosicion_excepcion_posicion_superior_existentes() { // Prueba para una posición igual o mayor al número de elementos que hay
+    public void getPorPosicion_excepcion_posicion_superior_existentes() {
         Contenedor contenedor = new Contenedor();
         try {
             contenedor.getPorPosicion(0);
@@ -128,8 +152,11 @@ public class ContenedorTest {
         }
     }
 
+    /**
+     * Prueba de valores límite para el método getPorPosicion.
+     */
     @Test
-    public void getPorPosicion_valores_limite() { // Prueba usando valores límite
+    public void getPorPosicion_valores_limite() {
         Contenedor contenedor = new Contenedor();
         Contenido objeto1 = new Contenido();
         objeto1.setDescripcion("Descripción en testGetPorPosicion para objeto1");
@@ -148,8 +175,12 @@ public class ContenedorTest {
         assert (objetoRecuperado.getDescripcion().equals("Descripción en testGetPorPosicion para objeto2"));
     }
 
+    // ---------------------------------------------------------------
+    // Tests para el método getPorId
+    // ---------------------------------------------------------------
+
     /**
-     * Test para el método getPorId del contenedor.
+     * Prueba para un contenedor vacío.
      */
     @Test
     public void getPorId_contenedor_vacio() {
@@ -161,9 +192,11 @@ public class ContenedorTest {
         }
     }
 
+    /**
+     * Prueba para un contenedor con elementos.
+     */
     @Test
     public void getPorId_contenedor_con_elementos() {
-
         // Devuelve el objeto si está en el contenedor
         Contenedor contenedor = new Contenedor();
         Contenido objeto = new Contenido();
@@ -175,22 +208,24 @@ public class ContenedorTest {
         assert (objetoRecuperado.getDescripcion().equals("Descripción en testGetPorId"));
     }
 
+    // ---------------------------------------------------------------
+    // Tests para el método toString
+    // ---------------------------------------------------------------
+
     /**
-     * Test para el método toString del contenedor.
+     * toString devuelve [] si no hay objetos en el contenedor.
      */
     @Test
     public void toString_contenedor_vacio() {
-        // Devuelve una cadena vacía si no hay objetos en el contenedor
-        {
-            Contenedor contenedor = new Contenedor();
-            assertEquals("[]", contenedor.toString());
-        }
+        Contenedor contenedor = new Contenedor();
+        assertEquals("[]", contenedor.toString());
     }
 
+    /**
+     * toString devuelve un string con los objetos en formato JSON.
+     */
     @Test
     public void toString_contenedor_no_vacio() {
-        // Devuelve una cadena con los objetos en el contenedor
-
         Contenedor contenedor = new Contenedor();
         Contenido objeto1 = new Contenido();
         objeto1.setDescripcion("Descripción en testToString para objeto1");
@@ -212,6 +247,9 @@ public class ContenedorTest {
 
     }
 
+    /**
+     * 
+     */
     @AfterAll
     public static void setDown() {
         System.out.println("Finalizando test clase Contenedor...");
