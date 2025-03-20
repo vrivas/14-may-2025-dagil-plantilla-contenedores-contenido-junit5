@@ -36,9 +36,43 @@ public class ContenedorTest {
             contenedor.add(objeto);
             fail();
         } catch (IllegalArgumentException e) {
-            System.out.println("Excepción lanzada: " + e.getMessage() + " para objeto nulo");
+            System.out.println("Excepción lanzada: " + e.getMessage() + " para objeto nulo.");
         }
 
+    }
+
+    /**
+     * Excepción si se intenta añadir un objeto que ya existe.
+     */
+    @Test
+    public void add_excepcion_si_objeto_ya_existe() {
+        try {
+            Contenedor contenedor = new Contenedor();
+            Contenido objeto = new Contenido();
+            objeto.setDescripcion("add_excepcion_si_objeto_ya_existe");
+            objeto.setId(1);
+            contenedor.add(objeto);
+            contenedor.add(objeto);
+            fail();
+        } catch (IllegalArgumentException e) {
+            System.out.println("Excepción lanzada: " + e.getMessage() + " para objeto ya añadido.");
+        }
+    }
+
+    /**
+     * Excepción si se intenta añadir un objeto con un id que ya existe.
+     */
+    @Test
+    public void add_excepcion_si_objeto_tiene_mismo_id_que_otro() {
+        try {
+            Contenedor contenedor = new Contenedor();
+            Contenido objeto1 = new Contenido();
+            contenedor.add(new Contenido().setId(1).setDescripcion("Objeto 1"));
+            contenedor.add(new Contenido().setId(1).setDescripcion("Objeto 2"));
+            fail();
+        } catch (IllegalArgumentException e) {
+            System.out.println("Excepción lanzada: " + e.getMessage() + " para objeto con id igual que otro.");
+        }
     }
 
     /**
@@ -69,24 +103,6 @@ public class ContenedorTest {
         Contenido objetoRecuperado = contenedor.add(objeto).getPorId(1);
         assert objetoRecuperado != null;
         assert objetoRecuperado.getDescripcion().equals(unaDescripcion);
-    }
-
-    /**
-     * Excepción si se intenta añadir un objeto que ya existe.
-     */
-    @Test
-    public void add_excepcion_si_objeto_ya_existe() {
-        try {
-            Contenedor contenedor = new Contenedor();
-            Contenido objeto = new Contenido();
-            objeto.setDescripcion("add_excepcion_si_objeto_ya_existe");
-            objeto.setId(1);
-            contenedor.add(objeto);
-            contenedor.add(objeto);
-            fail();
-        } catch (IllegalArgumentException e) {
-            System.out.println("Excepción lanzada: " + e.getMessage() + " para objeto ya añadido");
-        }
     }
 
     // ---------------------------------------------------------------
@@ -130,7 +146,7 @@ public class ContenedorTest {
             contenedor.getPorPosicion(-1);
             fail();
         } catch (IllegalArgumentException e) {
-            System.out.println("Excepción lanzada: " + e.getMessage() + " para posición -1");
+            System.out.println("Excepción lanzada: " + e.getMessage() + " para posición -1.");
         }
 
     }
@@ -145,13 +161,13 @@ public class ContenedorTest {
             contenedor.getPorPosicion(0);
             fail();
         } catch (IllegalArgumentException e) {
-            System.out.println("Excepción lanzada: " + e.getMessage() + " para posición 0");
+            System.out.println("Excepción lanzada: " + e.getMessage() + " para posición 0.");
         }
         try {
             contenedor.getPorPosicion(1);
             fail();
         } catch (IllegalArgumentException e) {
-            System.out.println("Excepción lanzada: " + e.getMessage() + " para posición 1");
+            System.out.println("Excepción lanzada: " + e.getMessage() + " para posición 1.");
         }
     }
 
@@ -228,20 +244,20 @@ public class ContenedorTest {
     public void toString_contenedor_no_vacio() {
         Contenedor contenedor = new Contenedor();
         Contenido objeto1 = new Contenido();
-        objeto1.setDescripcion("Descripción en testToString para objeto1");
+        objeto1.setDescripcion("Descripción en toString_contenedor_no_vacio para objeto1");
         objeto1.setId(1);
         contenedor.add(objeto1);
         // Para un solo objeto
-        assertEquals("[\n{id: 1, descripcion: 'Descripción en testToString para objeto1'},\n]",
+        assertEquals("[\n{id: 1, descripcion: 'Descripción en toString_contenedor_no_vacio para objeto1'},\n]",
                 contenedor.toString());
         Contenido objeto2 = new Contenido();
-        objeto2.setDescripcion("Descripción en testToString para objeto2");
+        objeto2.setDescripcion("Descripción en toString_contenedor_no_vacio para objeto2");
         objeto2.setId(2);
         contenedor.add(objeto2);
         // Para dos objetos
         String cadenaJSONEsperada = "[\n"
-                + "{id: 1, descripcion: 'Descripción en testToString para objeto1'},\n"
-                + "{id: 2, descripcion: 'Descripción en testToString para objeto2'},\n"
+                + "{id: 1, descripcion: 'Descripción en toString_contenedor_no_vacio para objeto1'},\n"
+                + "{id: 2, descripcion: 'Descripción en toString_contenedor_no_vacio para objeto2'},\n"
                 + "]";
         assertEquals(cadenaJSONEsperada, contenedor.toString());
 

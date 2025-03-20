@@ -47,7 +47,7 @@ public class Contenedor {
     */
     public Contenido getPorId(final int id) {
         Contenido objeto = null;
-        for (int i = 0; i < objetosContenidos.size() && objeto == null; ++i) {
+        for (int i = 0; objeto == null && i < objetosContenidos.size(); ++i) {
             if (objetosContenidos.get(i).getId() == id) {
                 objeto = objetosContenidos.get(i);
             }
@@ -80,11 +80,11 @@ public class Contenedor {
         if (objeto == null) {
             throw new IllegalArgumentException("El objeto que se intenta añadir es NULL");
         }
-        if (getPorId(objeto.getId()) != null) {
-            throw new IllegalArgumentException("Ya hay un objeto con el mismo id en el contenedor");
-        }
         if (objetosContenidos.contains(objeto)) {
             throw new IllegalArgumentException("El objeto ya está en el contenedor");
+        }
+        if (getPorId(objeto.getId()) != null) {
+            throw new IllegalArgumentException("Ya hay un objeto con el mismo id en el contenedor");
         }
         objetosContenidos.add(objeto);
         return this;
