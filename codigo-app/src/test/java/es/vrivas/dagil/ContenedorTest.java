@@ -13,7 +13,7 @@ public class ContenedorTest {
      * Inicialización de los tests
      */
     @BeforeAll
-    public void setUp() {
+    public static void setUp() {
         System.out.println("Iniciando test clase Contenedor...");
     }
 
@@ -213,7 +213,7 @@ public class ContenedorTest {
     }
 
     @AfterAll
-    public void setDown() {
+    public static void setDown() {
         System.out.println("Finalizando test clase Contenedor...");
     }
 

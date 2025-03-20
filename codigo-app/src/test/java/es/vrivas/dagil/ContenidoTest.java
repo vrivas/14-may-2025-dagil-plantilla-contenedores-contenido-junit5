@@ -14,7 +14,7 @@ public class ContenidoTest {
      * Mensaje indicando que se inician los tests de la clase Contenido
      */
     @BeforeAll
-    public void setUp() {
+    public static void setUp() {
         System.out.println("Iniciando test clase Contenido...");
     }
 
@@ -157,7 +157,7 @@ public class ContenidoTest {
     }
 
     @AfterAll
-    public void setDown() {
+    public static void setDown() {
         System.out.println("Finalizando test clase Contenido...");
     }
 }
