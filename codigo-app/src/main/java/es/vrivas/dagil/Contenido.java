@@ -1,14 +1,18 @@
 package es.vrivas.dagil;
 
+/**
+ * Clase Contenido.
+ * Representa un contenido con un identificador y una descripción.
+ */
 public class Contenido {
-    /// Identificador
+    /// Identificador.
     private int id;
 
-    /// Un campo de texto, como ejemplo de contenido
+    /// Un campo de texto, como ejemplo de contenido.
     private String descripcion;
 
     /**
-     * Constructor
+     * Constructor.
      */
     public Contenido() {
         this.id = 0;
@@ -16,26 +20,26 @@ public class Contenido {
     }
 
     /**
-     * Devuelve el valor de id
-     * @return Atributo id
+     * Devuelve el valor de id.
+     * @return Atributo id.
      */
     public final int getId() {
         return id;
     }
 
     /**
-     * Devuelve la descripcion
-     * @return Atributo descripcion
+     * Devuelve la descripcion.
+     * @return Atributo descripcion.
      */
     public final String getDescripcion() {
         return descripcion;
     }
 
     /**
-     * Establece el valor de id
-     * @param valor Valor para id
-     * @exception IllegalArgumentException Si el valor es negativo
-     * @return La propia instancia de Contenido
+     * Establece el valor de id.
+     * @param valor Valor para id.
+     * @exception IllegalArgumentException Si el valor es negativo.
+     * @return La propia instancia de Contenido.
      */
     public Contenido setId(final int valor) {
         if (valor < 0) {
@@ -46,10 +50,10 @@ public class Contenido {
     }
 
     /**
-     * Establece la descripción
-     * @param valor Valor de descripción
-     * @exception IllegalArgumentException Si la descripción es nula o vacía
-     * @return La propia instancia de Contenido
+     * Establece la descripción.
+     * @param valor Valor de descripción.
+     * @exception IllegalArgumentException Si la descripción es nula o vacía.
+     * @return La propia instancia de Contenido.
      */
     public Contenido setDescripcion(final String valor) {
         if (valor == null || valor.isEmpty()) {
@@ -60,8 +64,8 @@ public class Contenido {
     }
 
     /**
-     * Devuelve los atributos del Contenido en una cadena
-     * @return Cadena con los atributos del contenido en formato JSON
+     * Devuelve los atributos del Contenido en una cadena.
+     * @return Cadena con los atributos del contenido en formato JSON.
      */
     public final String toString() {
         return "{id: " + id + ", descripcion: '" + descripcion + "'}";

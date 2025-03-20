@@ -3,34 +3,50 @@
  * @author Víctor Rivas <vrivas@ujaen.es>
  * @date 19-mar-2025
  */
+
 package es.vrivas.dagil;
 
+/**
+ * Clase principal de la aplicación.
+ */
 public final class App {
-    /// Título de la aplicación
-    private static final String TITULO = "Clases Contenedor y Contenido";
+    /**
+     * Título de la aplicación.
+     */
+    public static final String TITULO = "Clases Contenedor y Contenido";
 
-    /// Autor/a de la aplicación
-    private static final String AUTOR = "Víctor Rivas <vrivas@ujaen.es>";
+    /**
+     * Autor/a de la aplicación.
+     */
+    public static final String AUTOR = "Víctor Rivas <vrivas@ujaen.es>";
 
-    /// Un objeto contenedor
+    /**
+    *  Máximo número de objetos de prueba.
+    */
+    public static final int MAX_OBJETOS_PRUEBA = 6;
+
+    /// Un objeto contenedor.
     private static Contenedor contenedor = new Contenedor();
 
-    /// Constructor privado para evitar instanciación
+    /// Número de líneas de separación entre el menú y el texto superior.
+    private static final int LINEAS_SEPARACION_MENU = 5;
+
+    /// Constructor privado para evitar instanciación.
     private App() {
     }
 
     /**
-    * Método para introducir algunos datos de prueba en el contenedor
+    * Método para introducir algunos datos de prueba en el contenedor.
     */
     public static int establecer_datos_de_prueba() {
-        for (int i = 0; i < 6; ++i) {
+        for (int i = 0; i < MAX_OBJETOS_PRUEBA; ++i) {
             contenedor.add(new Contenido().setId(i).setDescripcion("Objeto " + i));
         }
         return contenedor.getNumObjetosContenidos();
     }
 
     /**
-     * Método para responder a la opción 1 del menú: mostrar contenido del objeto contenedor
+     * Método para responder a la opción 1 del menú: mostrar contenido del objeto contenedor.
      */
     public static void mostrar_contenido_del_objeto_contenedor() {
         System.out.println("Opción 1: Mostrar contenido del objeto contenedor");
@@ -38,14 +54,10 @@ public final class App {
     }
 
     /**
-     * Método para mostrar el menú principal y leer la opción elegida
-     * 
-     * @return Opción elegida por el usuario
+     * Método para mostrar el menú principal y leer la opción elegida.
+     * @return Opción elegida por el usuario.
      */
     public static int menu_principal() {
-        for (int i = 0; i < 5; ++i) {
-            System.out.println();
-        }
         System.out.println("**** MENU ****");
         System.out.println("     ----");
         System.out.println("1. Mostrar contenido del objeto contenedor");
@@ -60,7 +72,7 @@ public final class App {
     }
 
     /**
-     * Método para pausar la ejecución hasta que el usuario pulse una tecla
+     * Método para pausar la ejecución hasta que el usuario pulse una tecla.
      */
     private static void pausa() {
         System.out.println("(Pulse una tecla para continuar...)");
@@ -68,13 +80,23 @@ public final class App {
     }
 
     /**
-     * Función principal
-     * @param args Argumentos de la línea de comandos
+    * Método para separar el menú del texto superior.
+    */
+    private static void separacionMenu(final int numLineas) {
+        for (int i = 0; i < numLineas; ++i) {
+            System.out.println();
+        }
+    }
+
+    /**
+     * Función principal.
+     * @param args Argumentos de la línea de comandos.
      */
     public static void main(String[] args) {
         System.out.println("\n" + TITULO + "    (por " + AUTOR + ")");
         establecer_datos_de_prueba();
         boolean salir = false;
+        separacionMenu(LINEAS_SEPARACION_MENU);
         do {
             switch (menu_principal()) {
                 case 0:

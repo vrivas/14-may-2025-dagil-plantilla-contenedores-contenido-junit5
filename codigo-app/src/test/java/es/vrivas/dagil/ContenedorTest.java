@@ -1,13 +1,16 @@
 package es.vrivas.dagil;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertSame;
-import static org.junit.jupiter.api.Assertions.fail;
-
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertSame;
+import static org.junit.jupiter.api.Assertions.fail;
+
+/**
+ * Clase de test para la clase Contenedor.
+ */
 public class ContenedorTest {
     /**
      * Inicialización de los tests.
@@ -58,14 +61,14 @@ public class ContenedorTest {
     @Test
     public void add_inserta_objeto() {
         // El objeto se ha añadido al contenedor
-        final String DESCRIPCION = "Descripción en add_inserta_objeto";
+        final String unaDescripcion = "Descripción en add_inserta_objeto";
         Contenedor contenedor = new Contenedor();
         Contenido objeto = new Contenido();
-        objeto.setDescripcion(DESCRIPCION);
+        objeto.setDescripcion(unaDescripcion);
         objeto.setId(1);
         Contenido objetoRecuperado = contenedor.add(objeto).getPorId(1);
-        assert (objetoRecuperado != null);
-        assert (objetoRecuperado.getDescripcion().equals(DESCRIPCION));
+        assert objetoRecuperado != null;
+        assert objetoRecuperado.getDescripcion().equals(unaDescripcion);
     }
 
     /**
@@ -73,7 +76,7 @@ public class ContenedorTest {
      */
     @Test
     public void add_excepcion_si_objeto_ya_existe() {
-        try {// Se intenta añadir otra vez el mismo objeto
+        try {
             Contenedor contenedor = new Contenedor();
             Contenido objeto = new Contenido();
             objeto.setDescripcion("add_excepcion_si_objeto_ya_existe");
@@ -96,7 +99,7 @@ public class ContenedorTest {
     public void getNumObjetosContenidos_contenedor_vacio() {
         // Devuelve 0 si no hay objetos en el contenedor
         Contenedor contenedor = new Contenedor();
-        assert (contenedor.getNumObjetosContenidos() == 0);
+        assert contenedor.getNumObjetosContenidos() == 0;
     }
 
     /**
@@ -109,7 +112,7 @@ public class ContenedorTest {
         objeto.setDescripcion("Descripción en testGetNumObjetosContenidos");
         objeto.setId(1);
         contenedor.add(objeto);
-        assert (contenedor.getNumObjetosContenidos() == 1);
+        assert contenedor.getNumObjetosContenidos() == 1;
     }
 
     // ---------------------------------------------------------------
@@ -167,12 +170,12 @@ public class ContenedorTest {
         objeto2.setId(2);
         contenedor.add(objeto2);
         Contenido objetoRecuperado = contenedor.getPorPosicion(0);
-        assert (objetoRecuperado != null);
-        assert (objetoRecuperado.getDescripcion().equals("Descripción en testGetPorPosicion para objeto1"));
+        assert objetoRecuperado != null;
+        assert objetoRecuperado.getDescripcion().equals("Descripción en testGetPorPosicion para objeto1");
 
         objetoRecuperado = contenedor.getPorPosicion(1);
-        assert (objetoRecuperado != null);
-        assert (objetoRecuperado.getDescripcion().equals("Descripción en testGetPorPosicion para objeto2"));
+        assert objetoRecuperado != null;
+        assert objetoRecuperado.getDescripcion().equals("Descripción en testGetPorPosicion para objeto2");
     }
 
     // ---------------------------------------------------------------
@@ -184,12 +187,9 @@ public class ContenedorTest {
      */
     @Test
     public void getPorId_contenedor_vacio() {
-        // Devuelve null si no hay objetos en el contenedor
-        {
-            Contenedor contenedor = new Contenedor();
-            Contenido objeto = contenedor.getPorId(1);
-            assert (objeto == null);
-        }
+        Contenedor contenedor = new Contenedor();
+        Contenido objeto = contenedor.getPorId(1);
+        assert objeto == null;
     }
 
     /**
@@ -204,8 +204,8 @@ public class ContenedorTest {
         objeto.setId(1);
         contenedor.add(objeto);
         Contenido objetoRecuperado = contenedor.getPorId(1);
-        assert (objetoRecuperado != null);
-        assert (objetoRecuperado.getDescripcion().equals("Descripción en testGetPorId"));
+        assert objetoRecuperado != null;
+        assert objetoRecuperado.getDescripcion().equals("Descripción en testGetPorId");
     }
 
     // ---------------------------------------------------------------
@@ -232,23 +232,23 @@ public class ContenedorTest {
         objeto1.setId(1);
         contenedor.add(objeto1);
         // Para un solo objeto
-        assertEquals("[\n{id: 1, descripcion: 'Descripción en testToString para objeto1'},\n]",
+        assertEquals("[\n{id: 1, unaDescripcion: 'Descripción en testToString para objeto1'},\n]",
                 contenedor.toString());
         Contenido objeto2 = new Contenido();
         objeto2.setDescripcion("Descripción en testToString para objeto2");
         objeto2.setId(2);
         contenedor.add(objeto2);
         // Para dos objetos
-        String cadenaJSONEsperada = "[\n" +
-                "{id: 1, descripcion: 'Descripción en testToString para objeto1'},\n" +
-                "{id: 2, descripcion: 'Descripción en testToString para objeto2'},\n" +
-                "]";
+        String cadenaJSONEsperada = "[\n"
+                + "{id: 1, unaDescripcion: 'Descripción en testToString para objeto1'},\n"
+                + "{id: 2, unaDescripcion: 'Descripción en testToString para objeto2'},\n"
+                + "]";
         assertEquals(cadenaJSONEsperada, contenedor.toString());
 
     }
 
     /**
-     * 
+     * Finalización de los tests.
      */
     @AfterAll
     public static void setDown() {

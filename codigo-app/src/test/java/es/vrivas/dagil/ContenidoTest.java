@@ -1,17 +1,20 @@
 package es.vrivas.dagil;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertSame;
-import static org.junit.jupiter.api.Assertions.fail;
-
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertSame;
+import static org.junit.jupiter.api.Assertions.fail;
+
+/**
+ * Clase de test para la clase Contenido.
+ */
 public class ContenidoTest {
 
     /**
-     * Mensaje indicando que se inician los tests de la clase Contenido
+     * Mensaje indicando que se inician los tests de la clase Contenido.
      */
     @BeforeAll
     public static void setUp() {
