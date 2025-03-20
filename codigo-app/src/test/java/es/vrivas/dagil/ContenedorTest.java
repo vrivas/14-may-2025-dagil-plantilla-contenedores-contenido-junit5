@@ -33,6 +33,7 @@ public class ContenedorTest {
         Contenedor contenedor = new Contenedor();
         try {
             contenedor.add(null);
+            contenedor.add(null);
             fail();
         } catch (IllegalArgumentException e) {
             System.out.println("Excepción lanzada: " + e.getMessage() + " para objeto nulo.");
@@ -50,7 +51,11 @@ public class ContenedorTest {
             Contenido objeto = new Contenido()
                     .setDescripcion("add_excepcion_si_objeto_ya_existe")
                     .setId(1);
+            Contenido objeto = new Contenido()
+                    .setDescripcion("add_excepcion_si_objeto_ya_existe")
+                    .setId(1);
             contenedor.add(objeto);
+            // Intento añadirlo otra vez: debería saltar la excepción.
             contenedor.add(objeto);
             fail();
         } catch (IllegalArgumentException e) {
@@ -67,6 +72,7 @@ public class ContenedorTest {
             Contenedor contenedor = new Contenedor();
             contenedor
                     .add(new Contenido().setId(1).setDescripcion("Objeto 1"))
+                    // Intento añadir un nuevo objeto con el mismo id
                     .add(new Contenido().setId(1).setDescripcion("Objeto 2"));
             fail();
         } catch (IllegalArgumentException e) {
@@ -81,6 +87,9 @@ public class ContenedorTest {
     public void add_devuelve_mismo_objeto() {
         // El método debe devolver el mismo objeto
         Contenedor contenedor = new Contenedor();
+        Contenido objeto = new Contenido()
+                .setDescripcion("Descripción en add_devuelve_mismo_objeto")
+                .setId(1);
         Contenido objeto = new Contenido()
                 .setDescripcion("Descripción en add_devuelve_mismo_objeto")
                 .setId(1);
@@ -101,6 +110,13 @@ public class ContenedorTest {
                 .add(objeto);
         assert contenedor.getPorId(1) != null;
         assertSame(contenedor.getPorId(1), objeto);
+        Contenido objeto = new Contenido()
+                .setDescripcion("Descripción en add_inserta_objeto")
+                .setId(1);
+        Contenedor contenedor = new Contenedor()
+                .add(objeto);
+        assert contenedor.getPorId(1) != null;
+        assertSame(contenedor.getPorId(1), objeto);
     }
 
     // ---------------------------------------------------------------
@@ -113,6 +129,7 @@ public class ContenedorTest {
     public void getNumObjetosContenidos_contenedor_vacio() {
         // Devuelve 0 si no hay objetos en el contenedor
         assert new Contenedor().getNumObjetosContenidos() == 0;
+        assert new Contenedor().getNumObjetosContenidos() == 0;
     }
 
     /**
@@ -120,6 +137,12 @@ public class ContenedorTest {
      */
     @Test
     public void getNumObjetosContenidos_contenedor_no_vacio() {
+        // Creo un contenedor, le añado un contenido y compruebo que el número de objetos es 1
+        Contenido objeto = new Contenido()
+                .setDescripcion("Descripción en add_inserta_objeto")
+                .setId(1);
+        Contenedor contenedor = new Contenedor()
+                .add(objeto);
         // Creo un contenedor, le añado un contenido y compruebo que el número de objetos es 1
         Contenido objeto = new Contenido()
                 .setDescripcion("Descripción en add_inserta_objeto")
@@ -141,6 +164,7 @@ public class ContenedorTest {
         // Prueba para posiciones menores que 0
         try {
             new Contenedor().getPorPosicion(-1);
+            new Contenedor().getPorPosicion(-1);
             fail();
         } catch (IllegalArgumentException e) {
             System.out.println("Excepción lanzada: " + e.getMessage() + " para posición -1.");
@@ -155,11 +179,13 @@ public class ContenedorTest {
     public void getPorPosicion_excepcion_posicion_superior_existentes() {
         try {
             new Contenedor().getPorPosicion(0);
+            new Contenedor().getPorPosicion(0);
             fail();
         } catch (IllegalArgumentException e) {
             System.out.println("Excepción lanzada: " + e.getMessage() + " para posición 0.");
         }
         try {
+            new Contenedor().getPorPosicion(1);
             new Contenedor().getPorPosicion(1);
             fail();
         } catch (IllegalArgumentException e) {
@@ -183,7 +209,20 @@ public class ContenedorTest {
                 .add(objeto1);
         assert contenedor.getPorPosicion(0) != null;
         assertSame(contenedor.getPorPosicion(0), objeto0);
+        Contenido objeto0 = new Contenido()
+                .setDescripcion("Descripción en testGetPorPosicion para objeto0")
+                .setId(0);
+        Contenido objeto1 = new Contenido()
+                .setDescripcion("Descripción en testGetPorPosicion para objeto1")
+                .setId(1);
+        Contenedor contenedor = new Contenedor()
+                .add(objeto0)
+                .add(objeto1);
+        assert contenedor.getPorPosicion(0) != null;
+        assertSame(contenedor.getPorPosicion(0), objeto0);
 
+        assert contenedor.getPorPosicion(1) != null;
+        assertSame(contenedor.getPorPosicion(1), objeto1);
         assert contenedor.getPorPosicion(1) != null;
         assertSame(contenedor.getPorPosicion(1), objeto1);
     }
@@ -198,6 +237,7 @@ public class ContenedorTest {
     @Test
     public void getPorId_contenedor_vacio() {
         assert new Contenedor().getPorId(1) == null;
+        assert new Contenedor().getPorId(1) == null;
     }
 
     /**
@@ -206,6 +246,12 @@ public class ContenedorTest {
     @Test
     public void getPorId_contenedor_con_elementos() {
         // Devuelve el objeto si está en el contenedor
+        Contenido objeto = new Contenido()
+                .setDescripcion("Descripción en testGetPorId")
+                .setId(1);
+        Contenedor contenedor = new Contenedor().add(objeto);
+        assert contenedor.getPorId(1) != null;
+        assertSame(contenedor.getPorId(1), objeto);
         Contenido objeto = new Contenido()
                 .setDescripcion("Descripción en testGetPorId")
                 .setId(1);
@@ -224,6 +270,7 @@ public class ContenedorTest {
     @Test
     public void toString_contenedor_vacio() {
         assertEquals("[]", new Contenedor().toString());
+        assertEquals("[]", new Contenedor().toString());
     }
 
     /**
@@ -235,10 +282,16 @@ public class ContenedorTest {
         Contenido objeto1 = new Contenido()
                 .setDescripcion("Descripción en toString_contenedor_no_vacio para objeto1")
                 .setId(1);
+        Contenido objeto1 = new Contenido()
+                .setDescripcion("Descripción en toString_contenedor_no_vacio para objeto1")
+                .setId(1);
         contenedor.add(objeto1);
         // Para un solo objeto
         assertEquals("[\n{id: 1, descripcion: 'Descripción en toString_contenedor_no_vacio para objeto1'},\n]",
                 contenedor.toString());
+        Contenido objeto2 = new Contenido()
+                .setDescripcion("Descripción en toString_contenedor_no_vacio para objeto2")
+                .setId(2);
         Contenido objeto2 = new Contenido()
                 .setDescripcion("Descripción en toString_contenedor_no_vacio para objeto2")
                 .setId(2);
