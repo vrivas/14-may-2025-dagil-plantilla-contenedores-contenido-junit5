@@ -30,8 +30,7 @@ public class ContenidoTest {
      */
     @Test
     public void getId_inicia_a_0() {
-        Contenido objeto = new Contenido();
-        assertEquals(0, objeto.getId());
+        assertEquals(0, new Contenido().getId());
     }
 
     /**
@@ -40,8 +39,8 @@ public class ContenidoTest {
     @Test
     public void getId_inicia_a_otro_valor() {
         // Comprueba otro id
-        Contenido objeto = new Contenido();
-        objeto.setId(1);
+        Contenido objeto = new Contenido()
+                .setId(1);
         assertEquals(1, objeto.getId());
     }
 
@@ -54,10 +53,8 @@ public class ContenidoTest {
      */
     @Test
     public void getDescripcion_inicia_vacia() {
-
         // Comprueba que la descripción inicial es ""
-        Contenido objeto = new Contenido();
-        assertEquals("", objeto.getDescripcion());
+        assertEquals("", new Contenido().getDescripcion());
     }
 
     /**
@@ -80,9 +77,8 @@ public class ContenidoTest {
     @Test
     public void setId_excepciones() {
         // Comprueba que no se puede establecer un id negativo
-        Contenido objeto = new Contenido();
         try {
-            objeto.setId(-1);
+            new Contenido().setId(-1);
             fail();
         } catch (IllegalArgumentException e) {
             System.out.println("Excepción lanzada: " + e.getMessage() + " para id negativo");
