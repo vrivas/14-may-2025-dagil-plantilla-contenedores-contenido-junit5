@@ -267,7 +267,7 @@ public class ContenedorTest {
      * Finalización de los tests.
      */
     @AfterAll
-    public static void setDown() {
+    public static void tearDown() {
         System.out.println("Finalizando test clase Contenedor...");
     }
 
