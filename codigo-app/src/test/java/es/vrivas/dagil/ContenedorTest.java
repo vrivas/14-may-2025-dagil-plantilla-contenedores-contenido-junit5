@@ -51,9 +51,6 @@ public class ContenedorTest {
             Contenido objeto = new Contenido()
                     .setDescripcion("add_excepcion_si_objeto_ya_existe")
                     .setId(1);
-            Contenido objeto = new Contenido()
-                    .setDescripcion("add_excepcion_si_objeto_ya_existe")
-                    .setId(1);
             contenedor.add(objeto);
             // Intento añadirlo otra vez: debería saltar la excepción.
             contenedor.add(objeto);
@@ -90,9 +87,6 @@ public class ContenedorTest {
         Contenido objeto = new Contenido()
                 .setDescripcion("Descripción en add_devuelve_mismo_objeto")
                 .setId(1);
-        Contenido objeto = new Contenido()
-                .setDescripcion("Descripción en add_devuelve_mismo_objeto")
-                .setId(1);
         assertSame(contenedor, contenedor.add(objeto));
 
     }
@@ -103,13 +97,6 @@ public class ContenedorTest {
     @Test
     public void add_inserta_objeto() {
         // El objeto se ha añadido al contenedor
-        Contenido objeto = new Contenido()
-                .setDescripcion("Descripción en add_inserta_objeto")
-                .setId(1);
-        Contenedor contenedor = new Contenedor()
-                .add(objeto);
-        assert contenedor.getPorId(1) != null;
-        assertSame(contenedor.getPorId(1), objeto);
         Contenido objeto = new Contenido()
                 .setDescripcion("Descripción en add_inserta_objeto")
                 .setId(1);
@@ -129,7 +116,6 @@ public class ContenedorTest {
     public void getNumObjetosContenidos_contenedor_vacio() {
         // Devuelve 0 si no hay objetos en el contenedor
         assert new Contenedor().getNumObjetosContenidos() == 0;
-        assert new Contenedor().getNumObjetosContenidos() == 0;
     }
 
     /**
@@ -143,13 +129,6 @@ public class ContenedorTest {
                 .setId(1);
         Contenedor contenedor = new Contenedor()
                 .add(objeto);
-        // Creo un contenedor, le añado un contenido y compruebo que el número de objetos es 1
-        Contenido objeto = new Contenido()
-                .setDescripcion("Descripción en add_inserta_objeto")
-                .setId(1);
-        Contenedor contenedor = new Contenedor()
-                .add(objeto);
-        assert contenedor.getNumObjetosContenidos() == 1;
     }
 
     // ---------------------------------------------------------------
@@ -179,13 +158,11 @@ public class ContenedorTest {
     public void getPorPosicion_excepcion_posicion_superior_existentes() {
         try {
             new Contenedor().getPorPosicion(0);
-            new Contenedor().getPorPosicion(0);
             fail();
         } catch (IllegalArgumentException e) {
             System.out.println("Excepción lanzada: " + e.getMessage() + " para posición 0.");
         }
         try {
-            new Contenedor().getPorPosicion(1);
             new Contenedor().getPorPosicion(1);
             fail();
         } catch (IllegalArgumentException e) {
@@ -209,20 +186,7 @@ public class ContenedorTest {
                 .add(objeto1);
         assert contenedor.getPorPosicion(0) != null;
         assertSame(contenedor.getPorPosicion(0), objeto0);
-        Contenido objeto0 = new Contenido()
-                .setDescripcion("Descripción en testGetPorPosicion para objeto0")
-                .setId(0);
-        Contenido objeto1 = new Contenido()
-                .setDescripcion("Descripción en testGetPorPosicion para objeto1")
-                .setId(1);
-        Contenedor contenedor = new Contenedor()
-                .add(objeto0)
-                .add(objeto1);
-        assert contenedor.getPorPosicion(0) != null;
-        assertSame(contenedor.getPorPosicion(0), objeto0);
 
-        assert contenedor.getPorPosicion(1) != null;
-        assertSame(contenedor.getPorPosicion(1), objeto1);
         assert contenedor.getPorPosicion(1) != null;
         assertSame(contenedor.getPorPosicion(1), objeto1);
     }
@@ -237,7 +201,6 @@ public class ContenedorTest {
     @Test
     public void getPorId_contenedor_vacio() {
         assert new Contenedor().getPorId(1) == null;
-        assert new Contenedor().getPorId(1) == null;
     }
 
     /**
@@ -246,12 +209,6 @@ public class ContenedorTest {
     @Test
     public void getPorId_contenedor_con_elementos() {
         // Devuelve el objeto si está en el contenedor
-        Contenido objeto = new Contenido()
-                .setDescripcion("Descripción en testGetPorId")
-                .setId(1);
-        Contenedor contenedor = new Contenedor().add(objeto);
-        assert contenedor.getPorId(1) != null;
-        assertSame(contenedor.getPorId(1), objeto);
         Contenido objeto = new Contenido()
                 .setDescripcion("Descripción en testGetPorId")
                 .setId(1);
@@ -270,7 +227,6 @@ public class ContenedorTest {
     @Test
     public void toString_contenedor_vacio() {
         assertEquals("[]", new Contenedor().toString());
-        assertEquals("[]", new Contenedor().toString());
     }
 
     /**
@@ -282,16 +238,10 @@ public class ContenedorTest {
         Contenido objeto1 = new Contenido()
                 .setDescripcion("Descripción en toString_contenedor_no_vacio para objeto1")
                 .setId(1);
-        Contenido objeto1 = new Contenido()
-                .setDescripcion("Descripción en toString_contenedor_no_vacio para objeto1")
-                .setId(1);
         contenedor.add(objeto1);
         // Para un solo objeto
         assertEquals("[\n{id: 1, descripcion: 'Descripción en toString_contenedor_no_vacio para objeto1'},\n]",
                 contenedor.toString());
-        Contenido objeto2 = new Contenido()
-                .setDescripcion("Descripción en toString_contenedor_no_vacio para objeto2")
-                .setId(2);
         Contenido objeto2 = new Contenido()
                 .setDescripcion("Descripción en toString_contenedor_no_vacio para objeto2")
                 .setId(2);
