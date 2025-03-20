@@ -7,11 +7,14 @@ import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 /**
- * Unit test for simple App.
+ * Tests de la clase principal App.
  */
 class AppTest {
+    /**
+     * Inicialización de los tests.
+     */
     @BeforeAll
-    public void setUp() {
+    public static void setUp() {
         System.out.println("Iniciando test clase App...");
     }
 
@@ -23,8 +26,11 @@ class AppTest {
         assertEquals(App.MAX_OBJETOS_PRUEBA, App.establecer_datos_de_prueba());
     }
 
+    /**
+     * Finalización de los tests.
+     */
     @AfterAll
-    public void setDown() {
+    public static void setDown() {
         System.out.println("Finalizando test clase App...");
     }
 }

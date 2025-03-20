@@ -232,7 +232,7 @@ public class ContenedorTest {
         objeto1.setId(1);
         contenedor.add(objeto1);
         // Para un solo objeto
-        assertEquals("[\n{id: 1, unaDescripcion: 'Descripción en testToString para objeto1'},\n]",
+        assertEquals("[\n{id: 1, descripcion: 'Descripción en testToString para objeto1'},\n]",
                 contenedor.toString());
         Contenido objeto2 = new Contenido();
         objeto2.setDescripcion("Descripción en testToString para objeto2");
@@ -240,8 +240,8 @@ public class ContenedorTest {
         contenedor.add(objeto2);
         // Para dos objetos
         String cadenaJSONEsperada = "[\n"
-                + "{id: 1, unaDescripcion: 'Descripción en testToString para objeto1'},\n"
-                + "{id: 2, unaDescripcion: 'Descripción en testToString para objeto2'},\n"
+                + "{id: 1, descripcion: 'Descripción en testToString para objeto1'},\n"
+                + "{id: 2, descripcion: 'Descripción en testToString para objeto2'},\n"
                 + "]";
         assertEquals(cadenaJSONEsperada, contenedor.toString());
 
