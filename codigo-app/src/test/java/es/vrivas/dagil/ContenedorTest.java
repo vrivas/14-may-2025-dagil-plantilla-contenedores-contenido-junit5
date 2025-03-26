@@ -36,7 +36,7 @@ public class ContenedorTest {
             contenedor.add(null);
             fail();
         } catch (IllegalArgumentException e) {
-            System.out.println("Excepción lanzada: " + e.getMessage() + " para objeto nulo.");
+            System.err.println("Excepción lanzada: " + e.getMessage() + " para objeto nulo.");
         }
 
     }
@@ -56,7 +56,7 @@ public class ContenedorTest {
             contenedor.add(objeto);
             fail();
         } catch (IllegalArgumentException e) {
-            System.out.println("Excepción lanzada: " + e.getMessage() + " para objeto ya añadido.");
+            System.err.println("Excepción lanzada: " + e.getMessage() + " para objeto ya añadido.");
         }
     }
 
@@ -73,7 +73,7 @@ public class ContenedorTest {
                     .add(new Contenido().setId(1).setDescripcion("Objeto 2"));
             fail();
         } catch (IllegalArgumentException e) {
-            System.out.println("Excepción lanzada: " + e.getMessage() + " para objeto con id igual que otro.");
+            System.err.println("Excepción lanzada: " + e.getMessage() + " para objeto con id igual que otro.");
         }
     }
 
@@ -146,7 +146,7 @@ public class ContenedorTest {
             new Contenedor().getPorPosicion(-1);
             fail();
         } catch (IllegalArgumentException e) {
-            System.out.println("Excepción lanzada: " + e.getMessage() + " para posición -1.");
+            System.err.println("Excepción lanzada: " + e.getMessage() + " para posición -1.");
         }
 
     }
@@ -160,13 +160,13 @@ public class ContenedorTest {
             new Contenedor().getPorPosicion(0);
             fail();
         } catch (IllegalArgumentException e) {
-            System.out.println("Excepción lanzada: " + e.getMessage() + " para posición 0.");
+            System.err.println("Excepción lanzada: " + e.getMessage() + " para posición 0.");
         }
         try {
             new Contenedor().getPorPosicion(1);
             fail();
         } catch (IllegalArgumentException e) {
-            System.out.println("Excepción lanzada: " + e.getMessage() + " para posición 1.");
+            System.err.println("Excepción lanzada: " + e.getMessage() + " para posición 1.");
         }
     }
 

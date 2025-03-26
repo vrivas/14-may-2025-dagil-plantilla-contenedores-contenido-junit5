@@ -81,7 +81,7 @@ public class ContenidoTest {
             new Contenido().setId(-1);
             fail();
         } catch (IllegalArgumentException e) {
-            System.out.println("Excepción lanzada: " + e.getMessage() + " para id negativo");
+            System.err.println("Excepción lanzada: " + e.getMessage() + " para id negativo");
         }
     }
 
@@ -111,7 +111,7 @@ public class ContenidoTest {
             objeto.setDescripcion(null);
             fail();
         } catch (IllegalArgumentException e) {
-            System.out.println("Excepción lanzada: " + e.getMessage() + " para descripción nula");
+            System.err.println("Excepción lanzada: " + e.getMessage() + " para descripción nula");
         }
 
         // Comprueba que no se puede establecer una descripción vacía
@@ -119,7 +119,7 @@ public class ContenidoTest {
             objeto.setDescripcion("");
             fail();
         } catch (IllegalArgumentException e) {
-            System.out.println("Excepción lanzada: " + e.getMessage() + " para descripción vacía");
+            System.err.println("Excepción lanzada: " + e.getMessage() + " para descripción vacía");
         }
     }
 
