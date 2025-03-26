@@ -129,6 +129,7 @@ public class ContenedorTest {
                 .setId(1);
         Contenedor contenedor = new Contenedor()
                 .add(objeto);
+        assert contenedor.getNumObjetosContenidos() == 1;
     }
 
     // ---------------------------------------------------------------
@@ -142,7 +143,6 @@ public class ContenedorTest {
         // Salta excepción si la posición no es válida
         // Prueba para posiciones menores que 0
         try {
-            new Contenedor().getPorPosicion(-1);
             new Contenedor().getPorPosicion(-1);
             fail();
         } catch (IllegalArgumentException e) {
