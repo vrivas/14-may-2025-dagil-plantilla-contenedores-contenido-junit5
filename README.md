@@ -50,10 +50,7 @@ _Captura de pantalla del tablero Trello con las HU seleccionadas (no olvidar pie
 
 **Diagrama UML**
 
-<!-- TODO Realizar captura de pantalla del UML -->
-_Captura del UML de esta HU (no olvidar pie de imagen, con su correspondiente numeración)_
-
-Para realizar este diagrama UML, hemos utilizado una presentación de Google Drive, disponible en: https://docs.google.com/presentation/d/1nBGS0mg-JMroSNARN_p-E-zMkPpGjXdRkgH4MnBz3e8/edit?usp=sharing
+NO ES NECESARIO QUE HAGAS EL UML PARA ESTA EVALUACIÓN.
 
 **Interfaz de Usuario**
 
