@@ -12,7 +12,7 @@ Creado a partir de un proyecto anterior que usaba JUnit 4, disponible en: https:
 
 # Contenido para el README que debe entregar el estudiantado
 
-## Datos personales del autor
+## Datos personales
 
 <!-- TODO: Completa tu nombre y tu correo -->
 
