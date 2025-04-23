@@ -18,7 +18,7 @@ Creado a partir de un proyecto anterior que usaba JUnit 4, disponible en: https:
 
 - **Nombre**: _Tu nombre_.
 - **E-mail**: _Tu correo_.
-- **Asignatura**: Desarrollo Ágil / Curso 2024-2025
+- **Asignatura**: Desarrollo Ágil / Curso XXXX-XXXX
 
 ## Tablero Trello
 
